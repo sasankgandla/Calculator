@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        #container {
+            text-align: center;
+        }
+
+        button {
+            height: 35px;
+            width: 35px;
+            margin: 5px;
+            border: 1px solid black;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Calculator</h1>
+        <input type="text" name="" id="inputtext">
+        <div class="row">
+            <button id="(">(</button>
+            <button id=")">)</button>
+            <button id="%">%</button>
+            <button id="C">C</button>
+        </div>
+        <div class="row">
+            <button id="7">7</button>
+            <button id="8">8</button>
+            <button id="9">9</button>
+            <button id="/">/</button>
+        </div>
+        <div class="row">
+            <button id="4">4</button>
+            <button id="5">5</button>
+            <button id="6">6</button>
+            <button id="*">*</button>
+        </div>
+        <div class="row">
+            <button id="1">1</button>
+            <button id="2">2</button>
+            <button id="3">3</button>
+            <button id="-">-</button>
+        </div>
+        <div class="row">
+            <button id="0">0</button>
+            <button id=".">.</button>
+            <button id="=">=</button>
+            <button id="+">+</button>
+        </div>
+    </div>
+
+
+    <script>
+        const buttons = document.querySelectorAll("button")
+        var string = "";
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function (e) {
+                if (e.target.id === '=') {
+                    var ans = eval(string);
+                    document.querySelector("input").value = ans;
+                }
+                else if (e.target.id == 'C') {
+                    string = "";
+                    document.querySelector("input").value = string;
+                }
+                else {
+                    string = string + button.id;
+                    document.querySelector("input").value = string;
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
